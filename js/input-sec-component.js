@@ -19,7 +19,7 @@ export function createComponent(componentElem) {
     throw new Error('Template .app-tmp-section does not have parent');
   }
 
-  const regenerateTitleNumbersAndStatus = () => {
+  const updateSec = () => {
     [...inputListContainer.querySelectorAll('.app-cmp-section')].forEach(
       (inputContainer, index, items) => {
         [...inputContainer.querySelectorAll('.app-title-sec-number')].forEach(
@@ -36,17 +36,18 @@ export function createComponent(componentElem) {
   const createSecComponent = () => {
     const secContainer = templateElem.content.cloneNode(true).firstElementChild;
 
+    createComponent(secContainer);
+
     secContainer.addEventListener('click', (ev) => {
       if (ev.target?.matches('.cmd-remove-sec') ?? false) {
         secContainer.remove();
 
-        regenerateTitleNumbersAndStatus();
+        updateSec();
       }
     });
 
-    createInputListComponent(secContainer);
-
-    regenerateTitleNumbersAndStatus();
+    sectionsContainer.append(newSection);
+    updateSec();
   };
 
   componentElem.addEventListener('click', (ev) => {

@@ -35,9 +35,6 @@ export function createComponent(componentElem) {
 
   const createSecComponent = () => {
     const secContainer = templateElem.content.cloneNode(true).firstElementChild;
-
-    createComponent(secContainer);
-
     secContainer.addEventListener('click', (ev) => {
       if (ev.target?.matches('.cmd-remove-sec') ?? false) {
         secContainer.remove();
@@ -45,8 +42,8 @@ export function createComponent(componentElem) {
         updateSec();
       }
     });
-
-    sectionsContainer.append(newSection);
+    createInputListComponent(secContainer);
+    inputListContainer.append(secContainer);
     updateSec();
   };
 
@@ -60,7 +57,3 @@ export function createComponent(componentElem) {
 
   return componentElem;
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  createInputListComponent(document.querySelector('body'));
-});

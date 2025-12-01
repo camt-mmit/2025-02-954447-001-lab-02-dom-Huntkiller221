@@ -33,30 +33,29 @@ export function createComponent(componentElem) {
     );
   };
 
-  const createInputComponent = () => {
-    const inputSecContainer =
-      templateElem.content.cloneNode(true).firstElementChild;
+  const createSecComponent = () => {
+    const secContainer = templateElem.content.cloneNode(true).firstElementChild;
 
-    inputContainer.addEventListener('click', (ev) => {
+    secContainer.addEventListener('click', (ev) => {
       if (ev.target?.matches('.cmd-remove-sec') ?? false) {
-        inputContainer.remove();
+        secContainer.remove();
 
         regenerateTitleNumbersAndStatus();
       }
     });
 
-    inputListContainer.append(inputSecContainer);
+    createInputListComponent(secContainer);
 
     regenerateTitleNumbersAndStatus();
   };
 
   componentElem.addEventListener('click', (ev) => {
     if (ev.target?.matches('.add-section-input')) {
-      createInputComponent();
+      createSecComponent();
     }
   });
 
-  createInputComponent();
+  createSecComponent();
 
   return componentElem;
 }

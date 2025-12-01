@@ -1,5 +1,11 @@
-import { createComponent } from './input-list-component';
-
+import { createComponent as createInputListComponent } from './input-list-component.js';
+/**
+ * Create input-list component.
+ *
+ * @param {HTMLElement} componentElem
+ *
+ * @returns {HTMLElement}
+ */
 export function createComponent(componentElem) {
   const templateElem = componentElem.querySelector('.app-tmp-section');
 
@@ -28,7 +34,7 @@ export function createComponent(componentElem) {
   };
 
   const createInputComponent = () => {
-    const inputContainer =
+    const inputSecContainer =
       templateElem.content.cloneNode(true).firstElementChild;
 
     inputContainer.addEventListener('click', (ev) => {
@@ -39,7 +45,7 @@ export function createComponent(componentElem) {
       }
     });
 
-    inputListContainer.append(inputContainer);
+    inputListContainer.append(inputSecContainer);
 
     regenerateTitleNumbersAndStatus();
   };
@@ -51,7 +57,7 @@ export function createComponent(componentElem) {
   });
 
   createInputComponent();
-  createComponent();
+
   return componentElem;
 }
 

@@ -1,11 +1,5 @@
 import { createComponent } from './input-list-component';
-/**
- * Create input-list component.
- *
- * @param {HTMLElement} componentElem
- *
- * @returns {HTMLElement}
- */
+
 export function createComponent(componentElem) {
   const templateElem = componentElem.querySelector('.app-tmp-section');
 

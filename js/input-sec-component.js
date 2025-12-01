@@ -51,7 +51,7 @@ export function createComponent(componentElem) {
   });
 
   createInputComponent();
-
+  createComponent();
   return componentElem;
 }
 
